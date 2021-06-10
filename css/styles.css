@@ -1,0 +1,56 @@
+:root {
+    --color-white: white;
+    --color-lightgray: lightgray;
+    --color-black: black;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/* Navigation Bar */
+.nav {
+    background-color: var(--color-black);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 2rem 1rem;
+    align-items: center;
+}
+
+.navLogo {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+ul {
+    /* remove the underlines */
+    list-style: none;
+}
+
+li {
+    display: inline;
+    color: red;
+    font-size: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-lightgray);
+}
+
+a:hover {
+    color: var(--color-white);
+    transition: color 0.2ss;
+}
