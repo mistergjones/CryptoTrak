@@ -38,22 +38,21 @@ html {
     color: gold;
 }
 
-ul {
-    /* remove the underlines */
-    list-style: none;
-}
-
-li {
+.navListColumns {
     display: inline;
-
     font-size: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
 }
 
-a {
+.navListColumns > a {
     text-decoration: none;
     color: var(--color-lightgray);
+}
+
+ul {
+    /* remove the underlines */
+    list-style: none;
 }
 
 a:hover {
@@ -67,6 +66,59 @@ h1 {
 
 h2 {
     font-size: 2rem;
+}
+
+.feature-left-card-container {
+    border: 3px solid red;
+    width: 60%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "feature-logo-area feature-image-area"
+        "feature-title-area feature-image-area"
+        "feature-content-area feature-image-area"
+        "feature-learn-more-area feature-image-area";
+}
+
+.feature-right-card-container {
+    border: 3px solid red;
+    width: 60%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "feature-image-area feature-logo-area"
+        "feature-image-area feature-title-area "
+        "feature-image-area feature-content-area"
+        "feature-image-area feature-learn-more-area";
+}
+
+.feature-logo-area {
+    grid-area: feature-logo-area;
+}
+
+.feature-title-area {
+    grid-area: feature-title-area;
+}
+
+.feature-learn-more-area {
+    grid-area: feature-learn-more-area;
+}
+
+.feature-content-area {
+    grid-area: feature-content-area;
+}
+
+.feature-image-area {
+    grid-area: feature-image-area;
+    margin: 0 auto;
 }
 
 footer {
@@ -86,4 +138,16 @@ footer {
 footer img {
     height: 30px;
     width: 30px;
+}
+
+footer li {
+    display: inline;
+    font-size: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--color-lightgray);
 }
