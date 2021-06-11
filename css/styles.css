@@ -24,12 +24,18 @@ html {
     flex-wrap: wrap;
     padding: 2rem 1rem;
     align-items: center;
+    color: var(--color-lightgray);
 }
 
 .navLogo {
-    display: inline-block;
     width: 40px;
     height: 40px;
+}
+
+.navTitle {
+    display: flex;
+    justify-content: left;
+    color: gold;
 }
 
 ul {
@@ -39,7 +45,7 @@ ul {
 
 li {
     display: inline;
-    color: red;
+
     font-size: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
@@ -53,4 +59,31 @@ a {
 a:hover {
     color: var(--color-white);
     transition: color 0.2ss;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+footer {
+    align-items: center;
+    background-color: var(--color-black);
+    bottom: 0;
+    color: var(--color-lightgray);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    left: 0;
+    padding: 2rem 1rem;
+    position: fixed;
+    width: 100%;
+}
+
+footer img {
+    height: 30px;
+    width: 30px;
 }
