@@ -2,6 +2,7 @@
     --color-white: white;
     --color-lightgray: lightgray;
     --color-black: black;
+    --color-light-blue: rgb(17, 245, 249);
 }
 
 *,
@@ -16,7 +17,25 @@ html {
     font-size: 62.5%;
 }
 
-/* Navigation Bar */
+ul {
+    /* remove the underlines */
+    list-style: none;
+}
+
+a:hover {
+    color: var(--color-light-blue);
+    transition: color 0.2ss;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+/* NAVIGATION BAR */
 .nav {
     background-color: var(--color-black);
     display: flex;
@@ -50,31 +69,21 @@ html {
     color: var(--color-lightgray);
 }
 
-ul {
-    /* remove the underlines */
-    list-style: none;
-}
+/* FEATURE CARD SECTION */
 
-a:hover {
-    color: var(--color-white);
-    transition: color 0.2ss;
-}
-
-h1 {
-    font-size: 3rem;
-}
-
-h2 {
-    font-size: 2rem;
+.features {
+    text-align: center;
 }
 
 .feature-left-card-container {
-    border: 3px solid red;
-    width: 60%;
+    padding-left: 4rem;
+    box-shadow: 10px 5px 50px 10px var(--color-lightgray);
+    border-radius: 10px;
+    width: 80%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 0.3fr 1fr 0.5fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -85,12 +94,13 @@ h2 {
 }
 
 .feature-right-card-container {
-    border: 3px solid red;
-    width: 60%;
+    box-shadow: 10px 5px 50px 10px var(--color-lightgray);
+    border-radius: 10px;
+    width: 80%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 0.3fr 1fr 0.5fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -108,18 +118,27 @@ h2 {
     grid-area: feature-title-area;
 }
 
-.feature-learn-more-area {
-    grid-area: feature-learn-more-area;
-}
-
 .feature-content-area {
     grid-area: feature-content-area;
+
+    font-size: 2rem;
+}
+
+.feature-content-area li,
+h3 {
+    padding-top: 1rem;
+}
+
+.feature-learn-more-area {
+    grid-area: feature-learn-more-area;
 }
 
 .feature-image-area {
     grid-area: feature-image-area;
     margin: 0 auto;
 }
+
+/* FOOTER */
 
 footer {
     align-items: center;
