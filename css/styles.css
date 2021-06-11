@@ -64,9 +64,14 @@ h2 {
     margin-right: 2rem;
 }
 
-.navListColumns > a {
+.navListColumns a {
     text-decoration: none;
     color: var(--color-lightgray);
+}
+
+.navListColumns a:hover {
+    color: var(--color-light-blue);
+    transition: color 0.2ss;
 }
 
 /* FEATURE CARD SECTION */
@@ -136,6 +141,64 @@ h3 {
 .feature-image-area {
     grid-area: feature-image-area;
     margin: 0 auto;
+}
+
+/* PRICE CARD AREA */
+.pricing-heading {
+    text-align: center;
+}
+.price-container {
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto;
+    border: 3px solid red;
+}
+
+.price-card-container-basic,
+.price-card-container-advance {
+    display: inline;
+    width: 40%;
+    border: 3px solid lightcoral;
+    padding: 1rem;
+    margin: 20px;
+}
+
+.price-card-container-advance-top,
+.price-card-container-basic-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.price-card-container-basic-top {
+    background-color: aqua;
+}
+
+.price-card-container-advance-top {
+    background-color: rgb(131, 85, 237);
+}
+
+.price {
+    display: inline;
+    flex-direction: row;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.billing-frequency {
+    display: inline;
+    flex-direction: row;
+}
+
+.price-card-container-content {
+    font-size: 2rem;
+}
+
+.price-card-container-content {
+    list-style: circle;
+    list-style-position: inside;
+    /* list-style-image: url("sqpurple.gif"); */
 }
 
 /* FOOTER */
