@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <header>
+            <nav class="nav">
+                <a href="/"
+                    ><img
+                        class="navLogo"
+                        src="images/bitcoin-logo.png"
+                        alt="Home"
+                /></a>
+                <h1 class="navTitle">CryptoTrak</h1>
+                <ul>
+                    <li class="navListColumns"><a href="#">Live Prices</a></li>
+                    <li class="navListColumns">
+                        <a href="/pricing.html">Pricing</a>
+                    </li>
+                    <li class="navListColumns"><a href="#">Dashboard</a></li>
+                    <li class="navListColumns"><a href="#">Advanced</a></li>
+                    <li class="navListColumns">
+                        <a href="/signup.html">Sign-Up</a>
+                    </li>
+                    <li class="navListColumns">
+                        <a href="/signin.html">Sign-In</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Sign up here</h1>
+
+        <form>
+            <label for="firstname">First name:</label><br />
+            <input type="text" id="firstname" name="firstname" /><br />
+            <label for="lastname">Last name:</label><br />
+            <input type="text" id="lastname" name="lastname" /><br />
+            <label for="email">Email Addres:</label><br />
+            <input type="email" name="email" id="email" /><br />
+            <label for="password1">Type Password (min 8 characters)</label
+            ><br />
+            <input type="password" name="password1" id="password1" /><br />
+            <label for="password2">Repeat Password:</label><br />
+            <input type="password" name="password2" id="password2" /><br />
+
+            <button>Sign-Up</button><button>Clear</button>
+        </form>
+
+        <footer>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">TOS / Privacy</a></li>
+                <li><a href="#">Crypto Info</a></li>
+                <li><a href="#">Trading Info</a></li>
+            </ul>
+            <div class="social-media">
+                <li>
+                    <a href="#"
+                        ><img
+                            src="images/linkedin-logo.png"
+                            alt="Social Media Linkedin link"
+                    /></a>
+                </li>
+                <li>
+                    <a href="#"
+                        ><img src="images/github-logo.png" alt="Github link"
+                    /></a>
+                </li>
+            </div>
+        </footer>
+
+        <script src="js/cryptotrak.js"></script>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    </body>
+</html>
