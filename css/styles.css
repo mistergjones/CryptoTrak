@@ -156,27 +156,27 @@ h3 {
     border: 3px solid red;
 }
 
-.price-card-container-basic,
-.price-card-container-advance {
+.price-card-container {
     display: inline;
-    width: 40%;
-    border: 3px solid lightcoral;
+    width: 30%;
+    /* border: 3px solid var(--color-lightgray); */
     padding: 1rem;
     margin: 20px;
-}
-
-.price-card-container-advance-top,
-.price-card-container-basic-top {
+    box-shadow: 10px 10px 30px 5px lightgray;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.price-card-container-basic-top {
+.price-card-container-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     background-color: aqua;
 }
 
-.price-card-container-advance-top {
-    background-color: rgb(131, 85, 237);
+.price-card-alignment {
+    margin-left: 1rem;
 }
 
 .price {
@@ -193,12 +193,29 @@ h3 {
 
 .price-card-container-content {
     font-size: 2rem;
-}
-
-.price-card-container-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     list-style: circle;
     list-style-position: inside;
-    /* list-style-image: url("sqpurple.gif"); */
+}
+
+.price-card-container-content li {
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+}
+
+.price-button-alignment {
+    text-align: center;
+}
+
+.price-button {
+    width: 80%;
+    height: 3rem;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--color-light-blue);
+    font-size: 2rem;
 }
 
 /* FOOTER */
