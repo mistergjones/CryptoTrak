@@ -251,4 +251,9 @@ footer a {
     color: var(--color-lightgray);
 }
 
+footer a:hover {
+    color: var(--color-light-blue);
+    transition: color 0.2ss;
+}
+
 /* SIGN UP & SIGN IN */
