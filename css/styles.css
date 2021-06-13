@@ -244,6 +244,56 @@ h3 {
     font-size: 2rem;
 }
 
+/* DASHBOARD SECTION */
+
+/* ADVANCED SECTION */
+.advanced-heading {
+    color: var(--color-white);
+    text-align: center;
+}
+.chart-container {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: center;
+}
+
+.chart1 {
+    border: 3px solid red;
+}
+
+.chart2 {
+    border: 3px solid blueviolet;
+}
+
+.chart-container h1 {
+    color: var(--color-white);
+    text-align: center;
+}
+
+.chart-buttons {
+    text-align: center;
+}
+
+.chart1 {
+    flex-grow: 1;
+}
+
+.chart2 {
+    flex-grow: 1;
+}
+
+#myChart1 {
+    border: 3px solid pink;
+    width: 100%;
+    background-color: var(--color-white);
+}
+
+#myChart2 {
+    border: 3px solid coral;
+    width: 100%;
+    background-color: var(--color-white);
+}
+
 /* SIGN UP & SIGN IN */
 
 .form-container {
