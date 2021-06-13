@@ -3,6 +3,7 @@
     --color-lightgray: lightgray;
     --color-black: black;
     --color-light-blue: rgb(17, 245, 249);
+    --color-purple: #5217ce;
 }
 
 *,
@@ -11,6 +12,14 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    position: relative;
+    background-image: url("https://blockfolio.com/static/media/heroIllustration.ef69653a.svg");
+    background-repeat: no-repeat;
+    background-color: black;
+    z-index: -1;
 }
 
 html {
@@ -74,13 +83,26 @@ h2 {
     transition: color 0.2ss;
 }
 
+/* HERO */
+.hero {
+    color: var(--color-white);
+}
+
+/* MAIN CONTENT */
+.main-content {
+    color: var(--color-white);
+}
+
 /* FEATURE CARD SECTION */
 
 .features {
     text-align: center;
+    color: var(--color-white);
+    font-weight: 900;
 }
 
 .feature-left-card-container {
+    background-color: var(--color-white);
     padding-left: 4rem;
     box-shadow: 10px 5px 50px 10px var(--color-lightgray);
     border-radius: 10px;
@@ -99,6 +121,7 @@ h2 {
 }
 
 .feature-right-card-container {
+    background-color: white;
     box-shadow: 10px 5px 50px 10px var(--color-lightgray);
     border-radius: 10px;
     width: 60%;
@@ -139,6 +162,7 @@ h3 {
 }
 
 .feature-image-area {
+    padding-top: 5rem;
     grid-area: feature-image-area;
     margin: 0 auto;
 }
@@ -146,6 +170,7 @@ h3 {
 /* PRICE CARD AREA */
 .pricing-heading {
     text-align: center;
+    color: var(--color-white);
 }
 .price-container {
     width: 80vw;
@@ -153,10 +178,11 @@ h3 {
     flex-direction: row;
     justify-content: center;
     margin: 0 auto;
-    border: 3px solid red;
+    /* border: 3px solid red; */
 }
 
 .price-card-container {
+    background-color: var(--color-white);
     display: inline;
     width: 30%;
     /* border: 3px solid var(--color-lightgray); */
@@ -218,6 +244,29 @@ h3 {
     font-size: 2rem;
 }
 
+/* SIGN UP & SIGN IN */
+
+.form-container {
+    /* border: 3px solid pink; */
+    background-color: var(--color-white);
+    width: 50%;
+    margin: 0 auto;
+    box-shadow: 10px 10px 30px 5px lightgray;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.acknowledgement,
+.form-buttons {
+    text-align: center;
+}
+
+.form-heading {
+    text-align: center;
+    color: var(--color-white);
+}
+
 /* FOOTER */
 
 footer {
@@ -255,5 +304,3 @@ footer a:hover {
     color: var(--color-light-blue);
     transition: color 0.2ss;
 }
-
-/* SIGN UP & SIGN IN */
