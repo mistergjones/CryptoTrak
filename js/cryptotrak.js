@@ -5,7 +5,7 @@ async function getBitcoin() {
     // obtain 1 months data of bitcoin
     try {
         const historicalBitcoinData = await axios.get(
-            "https://api.coincap.io/v2/assets/bitcoin/history?interval=d1&start=1577797200000&end=1580475600000"
+            "https://api.coincap.io/v2/assets/bitcoin/history?interval=d1&start=1577797200000&end=1623527003000"
         );
 
         // extract the data out in a format data array format chart.js requires. Destructure the returned dataObject
@@ -103,7 +103,9 @@ function bitcoinChart(dataLabels, dataPoints, myChart) {
     const config = {
         type: "line",
         data,
-        options: {},
+        options: {
+            pointRadius: 0,
+        },
     };
 
     // put the chart in the CSS ID element
@@ -304,7 +306,7 @@ function insertMovingAverageNulls(dataPoints, numberOfMovingAverageDays) {
 async function getBitcoinRSI() {
     try {
         const historicalBitcoinData = await axios.get(
-            "https://api.coincap.io/v2/assets/bitcoin/history?interval=d1&start=1577797200000&end=1580475600000"
+            "https://api.coincap.io/v2/assets/bitcoin/history?interval=d1&start=1577797200000&end=1623527003000"
         );
 
         // extract the data out in a format data array format chart.js requires. Destructure the returned dataObject
@@ -313,7 +315,7 @@ async function getBitcoinRSI() {
         );
 
         // now do the RSI component
-        var rsiData = RSI();
+        var rsiData = RSI(dataPoints);
 
         // draw the actual chart. Also need to supply the RSI data
         // bitcoinChart(dataLabels, dataPoints, "myChart3");
@@ -325,43 +327,8 @@ async function getBitcoinRSI() {
     }
 }
 
-function RSI() {
-    var tempData = [
-        44.3389,
-        44.0902,
-        44.1497,
-        43.6124,
-        44.3278,
-        44.8264,
-        45.0955,
-        45.4245,
-        45.8433,
-        46.0826,
-        45.8931,
-        46.0328,
-        45.614,
-        46.282,
-        46.282,
-        46.0028,
-        46.0328,
-        46.4116,
-        46.2222,
-        45.6439,
-        46.2122,
-        46.2521,
-        45.7137,
-        46.4515,
-        45.7835,
-        45.3548,
-        44.0288,
-        44.1783,
-        44.2181,
-        44.5672,
-        43.4205,
-        42.6628,
-        43.1314,
-    ];
-
+// the below function is called by getBitcoinRSI() to calculate the actual RSI information and return the data set
+function RSI(tempData) {
     var movingAverageDays = 14;
     // calculate the allDailyChanges on each day.
 
@@ -396,171 +363,48 @@ function RSI() {
         }
     }
 
-    // console.log("allGains are: ", allGains);
-    // console.log("allLosses are: ", allLosses);
-
     // 1.0 aggregate the only first 14 day aggregate of allGains & allLosses.
     // This becomes the first number in the 15th position to base the rest of our calculations on.
-    var runningTotal = 0;
-
     var eachDaysAverageGain = [];
     var eachDaysAverageLoss = [];
 
-    for (i = 0; i < movingAverageDays; i++) {
-        runningTotal = runningTotal + allGains[i];
-    }
-    eachDaysAverageGain.push(runningTotal / movingAverageDays);
-    runningTotal = 0;
+    // obtain just the first 14 day average gains/losses as a starting point.
+    eachDaysAverageGain = calculateFirst14DayAverage(
+        movingAverageDays,
+        allGains
+    );
+    eachDaysAverageLoss = calculateFirst14DayAverage(
+        movingAverageDays,
+        allLosses
+    );
 
-    for (i = 0; i < movingAverageDays; i++) {
-        runningTotal = runningTotal + allLosses[i];
-    }
-    eachDaysAverageLoss.push(runningTotal / movingAverageDays);
-    runningTotal = 0;
+    // console.log(allGains);
+    // console.log(allLosses);
 
-    console.log(allGains);
-    console.log(allLosses);
-
+    // Now calculat the remainder of all gains/losses.
     // Given that we are doing a 14 day moving average, we take now to calculate the 15th index position (16th row position) and onwards RSI....
-    // 2. Take the previous days AVG gain and multiply that by 13. Then ADD today's GAIN and diving by the moving average (i.e 14)
+    // 2. Take the previous days AVG gain and multiply that by 13. Then ADD today's GAIN and dividing by the moving average (i.e 14)
+    var startingPosition = movingAverageDays + 1;
+    var smoothingEffect = movingAverageDays - 1; // This is to ensure we apply a smooth effect
 
-    var startingPositionInAllGains = 15;
-    var startingPositionInAllLosses = 15;
-    var smoothingEffect = movingAverageDays - 1; // This is the 13
-    for (var i = startingPositionInAllGains; i < allGains.length; i++) {
-        eachDaysAverageGain.push(
-            (eachDaysAverageGain[i - startingPositionInAllGains] *
-                smoothingEffect +
-                allGains[i]) /
-                movingAverageDays
-        );
-    }
+    eachDaysAverageGain = calculateIncrementalAverageGainsLosses(
+        startingPosition,
+        allGains,
+        eachDaysAverageGain,
+        smoothingEffect,
+        movingAverageDays
+    );
 
-    for (var i = startingPositionInAllLosses; i < allLosses.length; i++) {
-        eachDaysAverageLoss.push(
-            (eachDaysAverageLoss[i - startingPositionInAllLosses] *
-                smoothingEffect +
-                allLosses[i]) /
-                movingAverageDays
-        );
-    }
+    eachDaysAverageLoss = calculateIncrementalAverageGainsLosses(
+        startingPosition,
+        allLosses,
+        eachDaysAverageLoss,
+        smoothingEffect,
+        movingAverageDays
+    );
 
-    console.log("Each Days Average Gain", eachDaysAverageGain);
-    console.log("Each Days Average Loss", eachDaysAverageLoss);
-
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[0] * 13 + allGains[15]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[1] * 13 + allGains[16]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[2] * 13 + allGains[17]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[3] * 13 + allGains[18]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[4] * 13 + allGains[19]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[5] * 13 + allGains[20]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[6] * 13 + allGains[21]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[7] * 13 + allGains[22]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[8] * 13 + allGains[23]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[9] * 13 + allGains[24]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[10] * 13 + allGains[25]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[11] * 13 + allGains[26]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[12] * 13 + allGains[27]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[13] * 13 + allGains[28]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[14] * 13 + allGains[29]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[15] * 13 + allGains[30]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[16] * 13 + allGains[31]) / movingAverageDays
-    // );
-    // eachDaysAverageGain.push(
-    //     (eachDaysAverageGain[17] * 13 + allGains[32]) / movingAverageDays
-    // );
-
-    // // 1. Take the previous days AVG Loss (the 14th position AVG Gain) and multiply that
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[0] * 13 + allLosses[15]) / movingAverageDays
-    // );
-
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[1] * 13 + allLosses[16]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[2] * 13 + allLosses[17]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[3] * 13 + allLosses[18]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[4] * 13 + allLosses[19]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[5] * 13 + allLosses[20]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[6] * 13 + allLosses[21]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[7] * 13 + allLosses[22]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[8] * 13 + allLosses[23]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[9] * 13 + allLosses[24]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[10] * 13 + allLosses[25]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[11] * 13 + allLosses[26]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[12] * 13 + allLosses[27]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[13] * 13 + allLosses[28]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[14] * 13 + allLosses[29]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[15] * 13 + allLosses[30]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[16] * 13 + allLosses[31]) / movingAverageDays
-    // );
-    // eachDaysAverageLoss.push(
-    //     (eachDaysAverageLoss[17] * 13 + allLosses[32]) / movingAverageDays
-    // );
-
-    // console.log(eachDaysAverageGain, eachDaysAverageLoss);
+    // console.log("Each Days Average Gain", eachDaysAverageGain);
+    // console.log("Each Days Average Loss", eachDaysAverageLoss);
 
     // now calculate the RS factors and ensure POSITIVE NUMBERS FOR THE LOSSES
     var rs = [];
@@ -587,4 +431,116 @@ function RSI() {
     }
 
     return rsi;
+}
+
+function calculateFirst14DayAverage(movingAverageDays, theDataArray) {
+    var tempArray = [];
+    var runningTotal = 0;
+    for (i = 0; i < movingAverageDays; i++) {
+        runningTotal = runningTotal + theDataArray[i];
+    }
+
+    tempArray.push(runningTotal / movingAverageDays);
+
+    return tempArray;
+}
+
+function calculateIncrementalAverageGainsLosses(
+    startingPosition,
+    allGains,
+    theDataArray,
+    smoothingEffect,
+    movingAverageDays
+) {
+    for (var i = startingPosition; i < allGains.length; i++) {
+        theDataArray.push(
+            (theDataArray[i - startingPosition] * smoothingEffect +
+                allGains[i]) /
+                movingAverageDays
+        );
+    }
+    return theDataArray;
+}
+
+async function getEthereumCandle() {
+    try {
+        const rawCandleData = await axios.get(
+            "https://api.coincap.io/v2/candles?exchange=poloniex&interval=h8&baseId=ethereum&quoteId=bitcoin\n"
+        );
+
+        var finalisedDataset = massageCandleData(rawCandleData);
+    } catch (error) {
+        console.log("The error is:", error);
+    }
+}
+
+// anyChart.js seems to have the CANDLESTICK chart data as an "array of arrays"
+function massageCandleData(rawCandleData) {
+    // just get the data from the rawCandleData object.
+    var tempData = rawCandleData.data.data;
+
+    var candleData = [];
+
+    // for each bit of data, need to obtain in the following order:
+    // 1. Date, Open, High, Low Close
+    var tempCandleArray = [];
+    for (var i = 0; i < tempData.length; i++) {
+        tempCandleArray = [];
+
+        // need to convert each 'period' in milleseconds to a shortened date
+        tempDate = tempData[i].period;
+        var shortenedDate = new Date(tempDate);
+        shortenedDate = shortenedDate
+            .toISOString(shortenedDate)
+            .substring(0, 10);
+
+        // push all ruquired fields into an array
+        tempCandleArray.push(shortenedDate);
+        tempCandleArray.push(tempData[i].open);
+        tempCandleArray.push(tempData[i].high);
+        tempCandleArray.push(tempData[i].low);
+        tempCandleArray.push(tempData[i].close);
+
+        // push each array into the master array
+        candleData.push(tempCandleArray);
+    }
+
+    // create a chart
+    chart = anychart.candlestick();
+
+    // create an OHLC series and set the data
+    var series = chart.candlestick(candleData);
+    series.name("ASDFDA");
+
+    chart.title("8 hr Etherium/Bitcoin CandleStick");
+
+    // set the container id
+    chart.container("container");
+
+    // initiate drawing the chart
+    chart.draw();
+
+    // // set the chart type
+    // var chart = anychart.stock();
+    // // set the series
+    // var series = chart.plot(0).candlestick(mapping);
+    // series.name("EUR USD Trade Data");
+    // // set the chart title
+    // chart.title("EUR USD Historical Trade Data");
+    // // set the container id
+    // chart.container("container");
+    // // draw the chart
+    // chart.draw();
+    // // create am EMA plot
+    // var plot = chart.plot(0);
+    // // create an EMA indicator with period 20
+    // var ema20 = plot.ema(mapping, 20).series();
+    // // set the EMA color
+    // ema20.stroke("#bf360c");
+    // // create am EMA plot
+    // var plot = chart.plot(0);
+    // // create an EMA indicator with period 5
+    // var ema5 = plot.ema(mapping, 5).series();
+    // // set the EMA color
+    // ema5.stroke("blue");
 }
