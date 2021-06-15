@@ -253,16 +253,20 @@ h3 {
 }
 .chart-container {
     display: flex;
-    flex-direction: row wrap;
+    flex-direction: row nowrap;
     justify-content: center;
 }
 
-.chart1 {
+.chart1,
+.chart3 {
     border: 3px solid red;
+    width: 40%;
 }
 
-.chart2 {
+.chart2,
+.chart4 {
     border: 3px solid blueviolet;
+    width: 40%;
 }
 
 .chart-container h1 {
@@ -274,24 +278,22 @@ h3 {
     text-align: center;
 }
 
-.chart1 {
-    flex-grow: 1;
-}
-
-.chart2 {
-    flex-grow: 1;
-}
-
-#myChart1 {
+#myChart1,
+#myChart3 {
     border: 3px solid pink;
-    width: 100%;
+    width: max-content;
+    height: max-content;
     background-color: var(--color-white);
+    display: none;
 }
 
-#myChart2 {
+#myChart2,
+#myChart4 {
     border: 3px solid coral;
-    width: 100%;
+    width: max-content;
+    height: max-content;
     background-color: var(--color-white);
+    display: none;
 }
 
 /* SIGN UP & SIGN IN */
