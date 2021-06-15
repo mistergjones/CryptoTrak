@@ -399,7 +399,8 @@ function RSI() {
     // console.log("allGains are: ", allGains);
     // console.log("allLosses are: ", allLosses);
 
-    // aggregate the only first 14 day aggregate of allGains & allLosses
+    // 1.0 aggregate the only first 14 day aggregate of allGains & allLosses.
+    // This becomes the first number in the 15th position to base the rest of our calculations on.
     var runningTotal = 0;
 
     var eachDaysAverageGain = [];
@@ -409,142 +410,164 @@ function RSI() {
         runningTotal = runningTotal + allGains[i];
     }
     eachDaysAverageGain.push(runningTotal / movingAverageDays);
-    // console.log(eachDaysAverageGain);
     runningTotal = 0;
 
     for (i = 0; i < movingAverageDays; i++) {
         runningTotal = runningTotal + allLosses[i];
     }
     eachDaysAverageLoss.push(runningTotal / movingAverageDays);
-    // console.log(eachDaysAverageLoss);
     runningTotal = 0;
 
-    // now to calculate the 15th position and onwards RSI....
+    console.log(allGains);
+    console.log(allLosses);
 
-    // 1. Take the previous days AVG gain (the 14th position AVG Gain) and multiply that
-    console.log(
-        (eachDaysAverageGain[0] * 13 + allGains[15]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[0] * 13 + allGains[15]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[1] * 13 + allGains[16]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[2] * 13 + allGains[17]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[3] * 13 + allGains[18]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[4] * 13 + allGains[19]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[5] * 13 + allGains[20]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[6] * 13 + allGains[21]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[7] * 13 + allGains[22]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[8] * 13 + allGains[23]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[9] * 13 + allGains[24]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[10] * 13 + allGains[25]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[11] * 13 + allGains[26]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[12] * 13 + allGains[27]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[13] * 13 + allGains[28]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[14] * 13 + allGains[29]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[15] * 13 + allGains[30]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[16] * 13 + allGains[31]) / movingAverageDays
-    );
-    eachDaysAverageGain.push(
-        (eachDaysAverageGain[17] * 13 + allGains[32]) / movingAverageDays
-    );
+    // Given that we are doing a 14 day moving average, we take now to calculate the 15th index position (16th row position) and onwards RSI....
+    // 2. Take the previous days AVG gain and multiply that by 13. Then ADD today's GAIN and diving by the moving average (i.e 14)
 
-    // 1. Take the previous days AVG Loss (the 14th position AVG Gain) and multiply that
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[0] * 13 + allLosses[15]) / movingAverageDays
-    );
+    var startingPositionInAllGains = 15;
+    var startingPositionInAllLosses = 15;
+    var smoothingEffect = movingAverageDays - 1; // This is the 13
+    for (var i = startingPositionInAllGains; i < allGains.length; i++) {
+        eachDaysAverageGain.push(
+            (eachDaysAverageGain[i - startingPositionInAllGains] *
+                smoothingEffect +
+                allGains[i]) /
+                movingAverageDays
+        );
+    }
 
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[1] * 13 + allLosses[16]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[2] * 13 + allLosses[17]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[3] * 13 + allLosses[18]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[4] * 13 + allLosses[19]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[5] * 13 + allLosses[20]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[6] * 13 + allLosses[21]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[7] * 13 + allLosses[22]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[8] * 13 + allLosses[23]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[9] * 13 + allLosses[24]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[10] * 13 + allLosses[25]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[11] * 13 + allLosses[26]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[12] * 13 + allLosses[27]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[13] * 13 + allLosses[28]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[14] * 13 + allLosses[29]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[15] * 13 + allLosses[30]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[16] * 13 + allLosses[31]) / movingAverageDays
-    );
-    eachDaysAverageLoss.push(
-        (eachDaysAverageLoss[17] * 13 + allLosses[32]) / movingAverageDays
-    );
+    for (var i = startingPositionInAllLosses; i < allLosses.length; i++) {
+        eachDaysAverageLoss.push(
+            (eachDaysAverageLoss[i - startingPositionInAllLosses] *
+                smoothingEffect +
+                allLosses[i]) /
+                movingAverageDays
+        );
+    }
 
-    console.log(eachDaysAverageGain, eachDaysAverageLoss);
+    console.log("Each Days Average Gain", eachDaysAverageGain);
+    console.log("Each Days Average Loss", eachDaysAverageLoss);
 
-    // now calculate the RS factors and ensure POSITIVE NUMBERS
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[0] * 13 + allGains[15]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[1] * 13 + allGains[16]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[2] * 13 + allGains[17]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[3] * 13 + allGains[18]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[4] * 13 + allGains[19]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[5] * 13 + allGains[20]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[6] * 13 + allGains[21]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[7] * 13 + allGains[22]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[8] * 13 + allGains[23]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[9] * 13 + allGains[24]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[10] * 13 + allGains[25]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[11] * 13 + allGains[26]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[12] * 13 + allGains[27]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[13] * 13 + allGains[28]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[14] * 13 + allGains[29]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[15] * 13 + allGains[30]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[16] * 13 + allGains[31]) / movingAverageDays
+    // );
+    // eachDaysAverageGain.push(
+    //     (eachDaysAverageGain[17] * 13 + allGains[32]) / movingAverageDays
+    // );
+
+    // // 1. Take the previous days AVG Loss (the 14th position AVG Gain) and multiply that
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[0] * 13 + allLosses[15]) / movingAverageDays
+    // );
+
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[1] * 13 + allLosses[16]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[2] * 13 + allLosses[17]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[3] * 13 + allLosses[18]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[4] * 13 + allLosses[19]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[5] * 13 + allLosses[20]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[6] * 13 + allLosses[21]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[7] * 13 + allLosses[22]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[8] * 13 + allLosses[23]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[9] * 13 + allLosses[24]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[10] * 13 + allLosses[25]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[11] * 13 + allLosses[26]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[12] * 13 + allLosses[27]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[13] * 13 + allLosses[28]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[14] * 13 + allLosses[29]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[15] * 13 + allLosses[30]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[16] * 13 + allLosses[31]) / movingAverageDays
+    // );
+    // eachDaysAverageLoss.push(
+    //     (eachDaysAverageLoss[17] * 13 + allLosses[32]) / movingAverageDays
+    // );
+
+    // console.log(eachDaysAverageGain, eachDaysAverageLoss);
+
+    // now calculate the RS factors and ensure POSITIVE NUMBERS FOR THE LOSSES
     var rs = [];
     for (i = 0; i < eachDaysAverageGain.length; i++) {
         rs.push((eachDaysAverageGain[i] / eachDaysAverageLoss[i]) * -1);
     }
-    console.log(rs);
+    // console.log("The rs is: ", rs);
 
     var rsi = [];
     // now calculate the RSI
@@ -556,7 +579,12 @@ function RSI() {
         }
     }
 
-    console.log(rsi);
+    // console.log("The rsi is:", rsi);
+
+    // NEED TO PRE-FILL THE FINALISED ARRAY WITH NULLS SO THE ALIGNMENT WITH THE DATA WORKS
+    for (var i = 0; i < movingAverageDays; i++) {
+        rsi.unshift(null);
+    }
 
     return rsi;
 }
