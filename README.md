@@ -70,7 +70,7 @@ const proudOfThisFunc = () => {
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Chartjs has no native CandleStick chart so the use of anychartjs was required. Perhaps forking chartjs and creating a candlestick card for them will be really useful.
 
 ### Useful resources
 
@@ -80,6 +80,5 @@ Use this section to outline areas that you want to continue focusing on in futur
 ## Authors
 
 -   Website - [Add your name here](https://www.your-site.com)
--   Twitter - [@yourusername](https://www.twitter.com/yourusername)
 
 ## Acknowledgments
