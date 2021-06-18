@@ -1,5 +1,34 @@
 console.log("Welcome to CryptoTrak");
 
+var basicPrice = 4.95;
+var monthlyPrice = 6.95;
+
+function togglePlan() {
+    // get the relevant elements by id
+    // check to see if the chexbox is active
+    //based on which one is active, update the prices. Reduce by 20% if yearly.
+    var checkBox = document.getElementById("switcher");
+    var planPrice = document.getElementsByClassName("price");
+
+    if (checkBox.checked == true) {
+        for (var i = 0; i < planPrice.length; i++) {
+            // remove the $ sign and take everything else to the right of it
+            tempNumber = Number(planPrice[i].innerText) * 0.8;
+            // round it to 2 deciams
+            var tempNumber = roundToTwo(tempNumber);
+            planPrice[i].innerText = tempNumber;
+        }
+    } else {
+        for (var i = 0; i < planPrice.length; i++) {
+            planPrice[0].innerText = 4.95;
+            planPrice[1].innerText = 6.95;
+        }
+    }
+}
+
+function roundToTwo(num) {
+    return +(Math.round(num + "e+2") + "e-2");
+}
 // obtain basic bitcoin data
 async function getBitcoin() {
     // obtain 1 months data of bitcoin
@@ -476,6 +505,12 @@ async function getEthereumCandle() {
 
 // anyChart.js seems to have the CANDLESTICK chart data as an "array of arrays"
 function massageCandleData(rawCandleData) {
+    // obtain the display:none CSS setting for this #container
+    var makeChartShow = document.getElementById("anychartJS-container");
+    // makeChartShow.style.visibility = "visible";
+    makeChartShow.style.width = "100%";
+    makeChartShow.style.height = "416px";
+
     // just get the data from the rawCandleData object.
     var tempData = rawCandleData.data.data;
 
@@ -510,12 +545,11 @@ function massageCandleData(rawCandleData) {
 
     // create an OHLC series and set the data
     var series = chart.candlestick(candleData);
-    series.name("ASDFDA");
 
-    chart.title("8 hr Etherium/Bitcoin CandleStick");
+    chart.title("8 hr Ethereum/Bitcoin CandleStick");
 
     // set the container id
-    chart.container("container");
+    chart.container("anychartJS-container");
 
     // initiate drawing the chart
     chart.draw();

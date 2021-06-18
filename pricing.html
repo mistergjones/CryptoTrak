@@ -37,6 +37,7 @@
         />
     </head>
     <body>
+        <div class="page-wrapper">
         <header>
             <nav class="nav">
                 <a href="index.html"
@@ -70,7 +71,16 @@
         </header>
         
         <section class="pricing-heading">
-            <h1>PRICE CARDS BELOW (not finalised)</h1>
+            <h1>OUR PRICING DETAILS BELOW</h1>
+        </section>
+
+        <section class="price-card-toggle">
+           
+            <label for="" class="toggler toggler-is-active" id="filt-monthly">Save 20% per month with a 12 month subscription?</label>
+            <div class="toggle">
+                <input onclick="togglePlan()" type="checkbox" name="" id="switcher" class="check">
+            </div>
+            <!-- <label for="" class="toggler" id="filt-yearly">Yearly</label> -->
         </section>
 
         <section class="price-container">
@@ -78,9 +88,10 @@
                 <div class="price-card-container-top">
                     <div class="price-card-alignment">
                         <h2>BASIC</h2>
-                        <span class="price">$4.95</span>
+                        <span class="dollar-sign">$</span>
+                        <span class="price">4.95</span>
                         <span class="billing-frequency">/ month </span>
-                        <span> Put BADGE HERE<img src="" alt="" /></span>
+                        <!-- <span> Put BADGE HERE<img src="" alt="" /></span> -->
                     </div>
                 </div>
                 <ul class="price-card-container-content">
@@ -98,9 +109,10 @@
                 <div class="price-card-container-top">
                     <div class="price-card-alignment">
                         <h2>ADVANCE</h2>
-                        <span class="price">$6.95</span>
+                        <span class="dollar-sign">$</span>
+                        <span class="price">6.95</span>
                         <span class="billing-frequency">/ month </span>
-                        <span> Put BADGE HERE<img src="" alt="" /></span>
+                        <!-- <span> Put BADGE HERE<img src="" alt="" /></span> -->
                     </div>
                 </div>
                 <ul class="price-card-container-content">
@@ -114,7 +126,7 @@
                 </div>
 
         </section>
-
+    </div>
         <footer>
             <ul>
                 <li><a href="#">About</a></li>
