@@ -64,96 +64,104 @@
         <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-stock.min.js"></script>
     </head>
     <body>
-        <header>
-            <nav class="nav">
-                <a href="index.html"
-                    ><img
-                        class="navLogo"
-                        src="images/bitcoin-logo.png"
-                        alt="Home"
-                /></a>
-                <h1 class="navTitle">CryptoTrak</h1>
-                <ul>
-                    <li class="navListColumns">
-                        <a href="liveprices.html">Live Prices</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="pricing.html">Pricing</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="advanced.html">Advanced</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="signup.html">Sign-Up</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="signin.html">Sign-In</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <h1 class="advanced-heading">Advanced Features</h1>
+        <div class="page-wrapper">
+            <header>
+                <nav class="nav">
+                    <a href="index.html"
+                        ><img
+                            class="navLogo"
+                            src="images/bitcoin-logo.png"
+                            alt="Home"
+                    /></a>
+                    <h1 class="navTitle">CryptoTrak</h1>
+                    <ul>
+                        <li class="navListColumns">
+                            <a href="liveprices.html">Live Prices</a>
+                        </li>
+                        <li class="navListColumns">
+                            <a href="pricing.html">Pricing</a>
+                        </li>
+                        <li class="navListColumns">
+                            <a href="dashboard.html">Dashboard</a>
+                        </li>
+                        <li class="navListColumns">
+                            <a href="advanced.html">Advanced</a>
+                        </li>
+                        <li class="navListColumns">
+                            <a href="signup.html">Sign-Up</a>
+                        </li>
+                        <li class="navListColumns">
+                            <a href="signin.html">Sign-In</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <h1 class="advanced-heading">Advanced Features</h1>
 
-        <div class="form-container">
-            <form action="">
-                <fieldset>
-                    <input
-                        class="someclass"
-                        type="text"
-                        placeholder="Enter Crypto Name:"
-                    />
-                    <div class="form-buttons">
-                        <button>Search</button>
-                        <button>Clear</button>
+            <div class="form-container">
+                <form action="">
+                    <fieldset>
+                        <input
+                            class="someclass"
+                            type="text"
+                            placeholder="Enter Crypto Name:"
+                        />
+                        <div class="form-buttons">
+                            <button>Search</button>
+                            <button>Clear</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart1">
+                    <h1>Bitcoin Chart</h1>
+                    <canvas id="myChart1"></canvas>
+                    <div class="chart-buttons">
+                        <button onclick="getBitcoin()">Get Bitcoin</button>
+                        <button>Refresh</button>
                     </div>
-                </fieldset>
-            </form>
+                </div>
+                <div class="chart2">
+                    <h1>Bollinger/MA Ethereum</h1>
+                    <canvas id="myChart2"></canvas>
+                    <div class="chart-buttons">
+                        <button onclick="getBollingerEthereum()">
+                            Get Ethereum
+                        </button>
+                        <button onclick="">Refresh</button>
+                    </div>
+                </div>
+
+                <div class="chart3">
+                    <h1>Bitcoin 14-day RSI</h1>
+                    <canvas id="myChart3"></canvas>
+                    <div class="chart-buttons">
+                        <button onclick="getBitcoinRSI()">
+                            Get Bitcoin RSI
+                        </button>
+                        <button>Refresh</button>
+                    </div>
+                </div>
+
+                <div class="chart4">
+                    <h1>Ethereum - 8hr Candle Stick</h1>
+                    <div
+                        id="anychartJS-container"
+                        style="display: hidden"
+                    ></div>
+                    <div class="chart-buttons">
+                        <button onclick="getEthereumCandle()">
+                            Get Ethereum
+                        </button>
+                        <button onclick="">Refresh</button>
+                    </div>
+
+                    <!-- <canvas id="container"></canvas> -->
+                </div>
+            </div>
         </div>
-
-        <section class="chart-container">
-            <div class="chart1">
-                <h1>Bitcoin Chart</h1>
-                <div class="chart-buttons">
-                    <button onclick="getBitcoin()">Get Bitcoin</button>
-                    <button>Refresh</button>
-                </div>
-                <canvas id="myChart1"></canvas>
-            </div>
-            <div class="chart2">
-                <h1>Bollinger/MA Ethereum</h1>
-                <div class="chart-buttons">
-                    <button onclick="getBollingerEthereum()">
-                        Get Ethereum
-                    </button>
-                    <button onclick="">Refresh</button>
-                </div>
-                <canvas id="myChart2"></canvas>
-            </div>
-        </section>
-        <br />
-
-        <section class="chart-container">
-            <div class="chart3">
-                <h1>Bitcoin 14-day RSI</h1>
-                <div class="chart-buttons">
-                    <button onclick="getBitcoinRSI()">Get Bitcoin RSI</button>
-                    <button>Refresh</button>
-                </div>
-                <canvas id="myChart3"></canvas>
-            </div>
-            <div class="chart4">
-                <h1>Eth - 8hr Candle Stick</h1>
-                <div class="chart-buttons">
-                    <button onclick="getEthereumCandle()">Get Ethereum</button>
-                    <button onclick="">Refresh</button>
-                </div>
-                <div id="container" style="width: 100%; height: 300px"></div>
-                <!-- <canvas id="container"></canvas> -->
-            </div>
-        </section>
 
         <footer>
             <ul>
