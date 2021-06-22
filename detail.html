@@ -2,19 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Live Prices - CryptoTrak</title>
-    <meta name="description" content="Monitor and chart your cryptos with ease" />
-    <meta property="og:title" content="CryptoTrak website" />
-    <meta property="og:description" content="A simple Crypto tracker website" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="http://" />
-    <meta property="og:url" content="http://tbc.com.au" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
 
     <!-- CSS Reset -->
@@ -22,6 +16,7 @@
 
     <!-- Milligram CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -51,31 +46,30 @@
             </ul>
         </nav>
     </header>
-    <section class="tbl--block">
-        <div class="buttons">
-            <button class="btn previous">
-                &lt;&lt; 50</button>
-            <button class="btn next">&gt;&gt; 50</button>
-            <button class="btn reload">Reload</button>
+    <!-- <h1>Detail</h1> -->
+    <div class="chart--container">
+
+
+        <div class="chart__display">
+
+            <canvas class="chart--area" id="detailChart"></canvas>
+
         </div>
-        <table class="tbl container tbl--container">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th></th>
-                    <!-- <th></th> -->
-                    <th>Price</th>
-                    <th>&#9650;&#9660;24hr%</th>
+        <section class="chart--buttons">
+            <button class="badge badge--primary badge--small one-day">1d</button>
+            <button class="badge badge--primary  badge--small seven-days">7d</button>
+            <button class="badge badge--primary  badge--small one-month">1m</button>
+            <button class="badge badge--primary  badge--small three-months">3m</button>
+            <button class="badge badge--primary   badge--small six-months">6m</button>
+            <button class="badge badge--primary badge--small nine-months">9m</button>
+            <button class="badge badge--primary  badge--small one-year">1y</button>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"
+            integrity="sha512-CAv0l04Voko2LIdaPmkvGjH3jLsH+pmTXKFoyh5TIimAME93KjejeP9j7wSeSRXqXForv73KUZGJMn8/P98Ifg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-                </tr>
-            </thead>
-            <tbody class="coins-data">
 
-            </tbody>
-
-        </table>
-    </section>
-
+    </div>
 
     <footer>
         <ul>
@@ -93,10 +87,7 @@
             </li>
         </div>
     </footer>
-
-    <script src="js/cryptotrak.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/detailGraph.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
