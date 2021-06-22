@@ -46,95 +46,94 @@ h2 {
 }
 /* Prices Table */
 .buttons {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1.5rem;
-  gap: 1rem;
-  /* width: 60vw; */
-  margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    gap: 1rem;
+    /* width: 60vw; */
+    margin: 0 auto;
 }
 th {
-  text-align: left;
-  padding: .5rem;
+    text-align: left;
+    padding: 0.5rem;
 }
 td {
-  /* background: grey; */
+    /* background: grey; */
 }
 .tbl--block {
-  background-color: #000;
-  opacity: .8;
-  margin: 0 auto;
-  padding: 1rem;
-  border: 2px solid #121517;
-  border-radius: 2.5rem;
-  width: 90vw;
-  margin: 10vh auto;
+    background-color: #000;
+    opacity: 0.8;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 2px solid #121517;
+    border-radius: 2.5rem;
+    width: 90vw;
+    margin: 10vh auto;
 }
 .tbl {
-  /* min-width: 60vw;
+    /* min-width: 60vw;
   max-width: 60vw; */
-  /* background: #000; */
-  color: #fff;
-  border-radius: 2rem;
-  border-collapse: collapse;
-  font-size: 1.2rem;
-  overflow: hidden;
-  line-height: 2rem;
+    /* background: #000; */
+    color: #fff;
+    border-radius: 2rem;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+    overflow: hidden;
+    line-height: 2rem;
 }
 
 .tbl tr {
-  transition: background .3s;
-  border-bottom: 2px solid #121517;
-  
+    transition: background 0.3s;
+    border-bottom: 2px solid #121517;
 }
 .coins-data tr:hover {
-  background: #121517;
+    background: #121517;
 }
 
 .coins-data a {
-  display: flex;
-  flex-wrap: wrap;
-  padding: .3rem;
-  justify-content: start;
-  align-items: left;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  color: #fff ;
-  overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.3rem;
+    justify-content: start;
+    align-items: left;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    color: #fff;
+    overflow: hidden;
 }
 
 .coin-price {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .symbol {
-  margin-bottom: .5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  color: lightgray;
-  font-size: 1.5rem;
-  font-weight: bold;
-  /* flex-wrap: wrap; */
-  width: 100%;
-  height: 100%;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    color: lightgray;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* flex-wrap: wrap; */
+    width: 100%;
+    height: 100%;
 }
 .symbol-name {
-  display: flex;
-  color: #fff;
-  font-weight: normal;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+    display: flex;
+    color: #fff;
+    font-weight: normal;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .icon-symbol {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: .5rem;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 0.5rem;
 }
 /* .icon-symbol {
 
@@ -144,101 +143,93 @@ td {
 /*Typography*/
 
 .rank {
-  display: none;
+    display: none;
 }
 
 .tbl--container {
-  width: 100%;
-  max-width: 1140px;
-}
-
-@media screen and (min-width:768px) {
-  .tbl--block {
-    max-width: 60vw;
-    /* margin: 0 auto; */
-  }
-  .tbl {
-    font-size: 2rem;
-  }
-  .symbol {
-    flex-direction: row;
-    align-items: center;
-    
-  }
-  .symbol-name {
     width: 100%;
-    height: 100%;
-    justify-content: center;
-  }
+    max-width: 1140px;
 }
 
+@media screen and (min-width: 768px) {
+    .tbl--block {
+        max-width: 60vw;
+        /* margin: 0 auto; */
+    }
+    .tbl {
+        font-size: 2rem;
+    }
+    .symbol {
+        flex-direction: row;
+        align-items: center;
+    }
+    .symbol-name {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+}
 
-
-@media screen and (min-width:1024px) {
-  .tbl--block {
-    max-width: 1140px;
-    /* margin: 0 auto; */
-  }
+@media screen and (min-width: 1024px) {
+    .tbl--block {
+        max-width: 1140px;
+        /* margin: 0 auto; */
+    }
 }
 
 /* Coin Chart Detail */
 
 .chart__display {
-  /* width: 50%; */
-  display: flex;
-  flex-direction: column;
-  /* height: 50%; */
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  
+    /* width: 50%; */
+    display: flex;
+    flex-direction: column;
+    /* height: 50%; */
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 .chart--container {
-
-  width: 70%;
-  margin: 0 auto;
-  /* height: 100vh;  */
-  background: rgba(255,255,255,.9);
-  /* background: white; */
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  /* gap: 5rem; */
-
+    width: 70%;
+    margin: 0 auto;
+    /* height: 100vh;  */
+    background: rgba(255, 255, 255, 0.9);
+    /* background: white; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 5rem; */
 }
 canvas {
-  /* aspect-ratio: 100 / 600; */
+    /* aspect-ratio: 100 / 600; */
 }
 .chart--area {
-  /* margin-bottom: 200px; */
-  /* height: 50%; */
+    /* margin-bottom: 200px; */
+    /* height: 50%; */
 }
 .chart--buttons {
-  display: flex;
-  flex-direction: column; 
-  width: 100%;
-  margin-top: 20px;
-  gap: 2px;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    gap: 2px;
+    justify-content: space-around;
+    align-items: center;
 }
-
-
 
 .btn__chart-history {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 
-@media screen and (min-width:768px) {
-  .chart--buttons {
-    flex-direction: row;
-  }  
-  .chart--container {
-    height: 70vh;
-  }
+@media screen and (min-width: 768px) {
+    .chart--buttons {
+        flex-direction: row;
+    }
+    .chart--container {
+        height: 70vh;
+    }
 }
 
 /* The .page-wrapper will help ensure footer and content play nicely together */
@@ -444,7 +435,35 @@ h3 {
 }
 
 .price-container {
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto;
+    /* border: 3px solid red; */
 }
+
+.price-card-container {
+    background-color: var(--color-white);
+    display: inline;
+    width: fit-content;
+    /* border: 3px solid var(--color-lightgray); */
+    padding: 1rem;
+    margin: 20px;
+    box-shadow: 10px 10px 30px 5px lightgray;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.price-card-container-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: var(--color-purple);
+    color: var(--color-white);
+}
+
 .coin--container {
     width: 80vw;
     display: flex;
