@@ -395,6 +395,24 @@ h3 {
     color: var(--color-white);
 }
 
+/* Dashboard Section */
+#search-result-table,
+#search-result-table a {
+    color: white;
+    background-color: (0, 0, 0, 0.5);
+}
+#search-result-table {
+    margin: 0 10%;
+    width: 90%;
+}
+#total-supply,
+#market-capital {
+    font-size: 4rem;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+}
+
 /* FOOTER */
 
 footer {
