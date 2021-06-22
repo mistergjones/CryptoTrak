@@ -23,54 +23,91 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
         />
-
         <!-- CSS Reset -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
         />
-
         <!-- Milligram CSS -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
         />
     </head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+        type="text/javascript"
+        src="https://www.gstatic.com/charts/loader.js"
+    ></script>
     <body>
-        <div class="page-wrapper">
-            <header>
-                <nav class="nav">
-                    <a href="index.html"
-                        ><img
-                            class="navLogo"
-                            src="images/bitcoin-logo.png"
-                            alt="Home"
-                    /></a>
-                    <h1 class="navTitle">CryptoTrak</h1>
-                    <ul>
-                        <li class="navListColumns">
-                            <a href="liveprices.html">Live Prices</a>
-                        </li>
-                        <li class="navListColumns">
-                            <a href="pricing.html">Pricing</a>
-                        </li>
-                        <li class="navListColumns">
-                            <a href="dashboard.html">Dashboard</a>
-                        </li>
-                        <li class="navListColumns">
-                            <a href="advanced.html">Advanced</a>
-                        </li>
-                        <li class="navListColumns">
-                            <a href="signup.html">Sign-Up</a>
-                        </li>
-                        <li class="navListColumns">
-                            <a href="signin.html">Sign-In</a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <h1>DASHBOARD STUFF GOES HERE</h1>
+        <header>
+            <nav class="nav">
+                <a href="index.html"
+                    ><img
+                        class="navLogo"
+                        src="images/bitcoin-logo.png"
+                        alt="Home"
+                /></a>
+                <h1 class="navTitle">CryptoTrak</h1>
+                <ul>
+                    <li class="navListColumns">
+                        <a href="liveprices.html">Live Prices</a>
+                    </li>
+                    <li class="navListColumns">
+                        <a href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="navListColumns">
+                        <a href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="navListColumns">
+                        <a href="advanced.html">Advanced</a>
+                    </li>
+                    <li class="navListColumns">
+                        <a href="signup.html">Sign-Up</a>
+                    </li>
+                    <li class="navListColumns">
+                        <a href="signin.html">Sign-In</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <h1 class="advanced-heading">Dashboard</h1>
+        <!-- <div>
+                <input type="text"  name="search" placeholder="Crypto name here...">
+                <button type="button" id="search-button">SEARCH</button>
+            </div>  -->
+        <div class="form-container">
+            <!-- <form action=""> -->
+            <fieldset>
+                <input
+                    id="search-box"
+                    class="someclass"
+                    type="text"
+                    placeholder="Enter Crypto Name:"
+                />
+                <div class="form-buttons">
+                    <button id="search-button">Search</button>
+                    <button id="clear-button">Clear</button>
+                </div>
+            </fieldset>
+            <!-- </form> -->
         </div>
+        <div id="search-result">
+            <table id="search-result-table"></table>
+        </div>
+        <section class="chart-container">
+            <div class="chart1">
+                <div id="total-supply"></div>
+            </div>
+            <div class="chart2">
+                <div id="market-capital"></div>
+            </div>
+        </section>
+        <div id="chart-report" style="height: 700px; width: 700px">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div id="chart_div" style="width: 900px; height: 500px"></div>
         <footer>
             <ul>
                 <li><a href="#">About</a></li>
@@ -93,8 +130,8 @@
                 </li>
             </div>
         </footer>
-
         <script src="js/cryptotrak.js"></script>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script src="js/dashboard.js"></script>
     </body>
 </html>
