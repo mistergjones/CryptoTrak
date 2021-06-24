@@ -5,6 +5,9 @@ let searchTable = document.getElementById("search-result-table");
 let marketCapital = document.getElementById("market-capital");
 let totalSupply = document.getElementById("total-supply");
 let clearButton = document.getElementById("clear-button");
+let chart6 = document.getElementById("chart1");
+let chart7 = document.getElementById("chart2");
+
 var data;
 clearButton.addEventListener("click", () => {
     searchBox.value = "";
@@ -17,7 +20,7 @@ searchBtn.addEventListener("click", async () => {
             .get(url)
             .then((response) => {
                 data = response.data.data;
-                // console.log({data});
+
                 let tableData = `<tr>
                         <th>Crypto Name</th>
                         <th>Symbol</th>
@@ -67,12 +70,12 @@ searchBtn.addEventListener("click", async () => {
             }&quoteId=tether&start=${
                 new Date().getTime() - 86400000 * 7
             }&end=${new Date().getTime()}`;
-            // let data2 = getDataFromAPI(url2);
+
             axios
                 .all([await axios.get(url), await axios.get(url2)])
                 .then(
                     axios.spread((response1, response2) => {
-                        // console.log(response)
+                        console.log(response1)
                         var { dataPoints, dataLabels } = massageData(
                             response1.data.data
                         );
@@ -92,24 +95,29 @@ searchBtn.addEventListener("click", async () => {
                         var t1 = document.createTextNode(
                             "Total Market Capital (USD):"
                         ); // Create a text node               // Create a <h1> element
+                        marketCapital.innerHTML = "";
+                        chart6.classList.remove("hide");
+                        // marketCapital.style.display = "block";
                         h1.appendChild(t1);
                         var t2 = document.createTextNode(capital); // Create a text node
                         var para1 = document.createElement("p");
                         para1.appendChild(t2);
-                        marketCapital.innerHTML = "";
                         marketCapital.appendChild(h1);
                         marketCapital.appendChild(para1);
                         var h2 = document.createElement("H1"); // Create a <h1> element
                         var t3 = document.createTextNode(
                             "Total Current Supply (USD):"
                         ); // Create a text node               // Create a <h1> element
+                        totalSupply.innerHTML = "";
+                        chart7.classList.remove("hide");
+                        // totalSupply.style.display = "block";
                         h2.appendChild(t3);
                         var t4 = document.createTextNode(supply); // Create a text node
                         var para2 = document.createElement("p");
                         para2.appendChild(t4);
-                        totalSupply.innerHTML = "";
                         totalSupply.appendChild(h2);
                         totalSupply.appendChild(para2);
+                        // chartContainer .style.display = "flex";
                         let response2Arr = [];
                         response2.data.data.forEach((datum) => {
                             let tempArr = [];
@@ -127,14 +135,6 @@ searchBtn.addEventListener("click", async () => {
                         });
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
-                            // var data = google.visualization.arrayToDataTable([
-                            // ['June', 20, 28, 38, 45],
-                            // ['July', 31, 38, 55, 66],
-                            // ['Wed', 50, 55, 77, 80],
-                            // ['Thu', 77, 77, 66, 50],
-                            // ['Fri', 68, 66, 22, 15]
-                            // // Treat first row as data as well.
-                            // ], true);
                             var data = google.visualization.arrayToDataTable(
                                 response2Arr,
                                 true

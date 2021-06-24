@@ -73,10 +73,7 @@
             </nav>
         </header>
         <h1 class="advanced-heading">Dashboard</h1>
-        <!-- <div>
-                <input type="text"  name="search" placeholder="Crypto name here...">
-                <button type="button" id="search-button">SEARCH</button>
-            </div>  -->
+
         <div class="form-container">
             <!-- <form action=""> -->
             <fieldset>
@@ -94,20 +91,20 @@
             <!-- </form> -->
         </div>
         <div id="search-result">
-            <table id="search-result-table"></table>
+            <table id="search-result-table" class="horizontal-center"></table>
         </div>
         <section class="chart-container">
-            <div class="chart1">
+            <div id="chart1" class="hide">
                 <div id="total-supply"></div>
             </div>
-            <div class="chart2">
+            <div id="chart2" class="hide">
                 <div id="market-capital"></div>
             </div>
         </section>
-        <div id="chart-report" style="height: 700px; width: 700px">
+        <div id="chart-report" class="horizontal-center">
             <canvas id="myChart"></canvas>
         </div>
-        <div id="chart_div" style="width: 900px; height: 500px"></div>
+        <div id="chart_div" class="horizontal-center" style="height: 700px;"></div>
         <footer>
             <ul>
                 <li><a href="#">About</a></li>
