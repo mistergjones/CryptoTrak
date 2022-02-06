@@ -50,45 +50,45 @@
                         alt="Home"
                 /></a>
                 <h1 class="navTitle">CryptoTrak</h1>
-                <ul>
-                    <li class="navListColumns">
+                <ul class="navListColumns">
+                    <li class="li-decoration">
                         <a href="liveprices.html">Live Prices</a>
                     </li>
-                    <li class="navListColumns">
+                    <li class="li-decoration">
                         <a href="pricing.html">Pricing</a>
                     </li>
-                    <li class="navListColumns">
+                    <li class="li-decoration">
                         <a href="dashboard.html">Dashboard</a>
                     </li>
-                    <li class="navListColumns">
+                    <li class="li-decoration">
                         <a href="advanced.html">Advanced</a>
                     </li>
-                    <li class="navListColumns">
+                    <li class="li-decoration">
                         <a href="signup.html">Sign-Up</a>
                     </li>
-                    <li class="navListColumns">
+                    <li class="li-decoration">
                         <a href="signin.html">Sign-In</a>
                     </li>
                 </ul>
             </nav>
         </header>
-        <h1 class="advanced-heading">Dashboard</h1>
 
-        <div class="form-container">
-            <!-- <form action=""> -->
-            <fieldset>
-                <input
-                    id="search-box"
-                    class="someclass"
-                    type="text"
-                    placeholder="Enter Crypto Name:"
-                />
-                <div class="form-buttons">
-                    <button id="search-button">Search</button>
-                    <button id="clear-button">Clear</button>
-                </div>
-            </fieldset>
-            <!-- </form> -->
+        <div class="dashboard-container">
+            <h1 class="dashboard-heading">Dashboard</h1>
+            <form action="">
+                <fieldset>
+                    <input
+                        id="search-box"
+                        class="someclass"
+                        type="text"
+                        placeholder="Enter Crypto Name: e.g. BTC"
+                    />
+                    <div class="form-buttons">
+                        <button id="search-button">Search</button>
+                        <button id="clear-button">Clear</button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
         <div id="search-result">
             <table id="search-result-table" class="horizontal-center"></table>
@@ -104,7 +104,11 @@
         <div id="chart-report" class="horizontal-center">
             <canvas id="myChart"></canvas>
         </div>
-        <div id="chart_div" class="horizontal-center" style="height: 700px;"></div>
+        <div
+            id="chart_div"
+            class="horizontal-center"
+            style="height: 700px"
+        ></div>
         <footer>
             <ul>
                 <li><a href="#">About</a></li>
