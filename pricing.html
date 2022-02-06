@@ -18,7 +18,7 @@
         <meta property="og:url" content="http://tbc.com.au" />
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-                <!-- Google Fonts -->
+        <!-- Google Fonts -->
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
@@ -38,95 +38,103 @@
     </head>
     <body>
         <div class="page-wrapper">
-        <header>
-            <nav class="nav">
-                <a href="index.html"
-                    ><img
-                        class="navLogo"
-                        src="images/bitcoin-logo.png"
-                        alt="Home"
-                /></a>
-                <h1 class="navTitle">CryptoTrak</h1>
-                <ul>
-                    <li class="navListColumns">
-                        <a href="liveprices.html">Live Prices</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="pricing.html">Pricing</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="advanced.html">Advanced</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="signup.html">Sign-Up</a>
-                    </li>
-                    <li class="navListColumns">
-                        <a href="signin.html">Sign-In</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        
-        <section class="pricing-heading">
-            <h1>OUR PRICING DETAILS BELOW</h1>
-        </section>
+            <header>
+                <nav class="nav">
+                    <a href="index.html"
+                        ><img
+                            class="navLogo"
+                            src="images/bitcoin-logo.png"
+                            alt="Home"
+                    /></a>
+                    <h1 class="navTitle">CryptoTrak</h1>
+                    <ul class="navListColumns">
+                        <li class="li-decoration">
+                            <a href="liveprices.html">Live Prices</a>
+                        </li>
+                        <li class="li-decoration">
+                            <a href="pricing.html">Pricing</a>
+                        </li>
+                        <li class="li-decoration">
+                            <a href="dashboard.html">Dashboard</a>
+                        </li>
+                        <li class="li-decoration">
+                            <a href="advanced.html">Advanced</a>
+                        </li>
+                        <li class="li-decoration">
+                            <a href="signup.html">Sign-Up</a>
+                        </li>
+                        <li class="li-decoration">
+                            <a href="signin.html">Sign-In</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
 
-        <section class="price-card-toggle">
-           
-            <label for="" class="toggler toggler-is-active" id="filt-monthly">Save 20% per month with a 12 month subscription?</label>
-            <div class="toggle">
-                <input onclick="togglePlan()" type="checkbox" name="" id="switcher" class="check">
-            </div>
-            <!-- <label for="" class="toggler" id="filt-yearly">Yearly</label> -->
-        </section>
+            <section class="pricing-heading">
+                <h1>OUR PRICING DETAILS BELOW</h1>
+            </section>
 
-        <section class="price-container">
-            <div class="price-card-container">
-                <div class="price-card-container-top">
-                    <div class="price-card-alignment">
-                        <h2>BASIC</h2>
-                        <span class="dollar-sign">$</span>
-                        <span class="price">4.95</span>
-                        <span class="billing-frequency">/ month </span>
-                        <!-- <span> Put BADGE HERE<img src="" alt="" /></span> -->
+            <section class="price-card-toggle">
+                <label
+                    for=""
+                    class="toggler toggler-is-active"
+                    id="filt-monthly"
+                    >Save 20% per month with a 12 month subscription?</label
+                >
+                <div class="toggle">
+                    <input
+                        onclick="togglePlan()"
+                        type="checkbox"
+                        name=""
+                        id="switcher"
+                        class="check"
+                    />
+                </div>
+                <!-- <label for="" class="toggler" id="filt-yearly">Yearly</label> -->
+            </section>
+
+            <section class="price-container">
+                <div class="price-card-container">
+                    <div class="price-card-container-top">
+                        <div class="price-card-alignment">
+                            <h2>BASIC</h2>
+                            <span class="dollar-sign">$</span>
+                            <span class="price">4.95</span>
+                            <span class="billing-frequency">/ month </span>
+                        </div>
+                    </div>
+                    <ul class="price-card-container-content">
+                        <li>Live Prices</li>
+                        <li>Basic Charts</li>
+                        <li>Zero Spam</li>
+                        <li>Easy cancellation</li>
+                    </ul>
+                    <div class="price-button-alignment">
+                        <button class="price-button">Purchase Now</button>
                     </div>
                 </div>
-                <ul class="price-card-container-content">
-                    <li>Live Prices</li>
-                    <li>Basic Charts</li>
-                    <li>Zero Spam</li>
-                    <li>Easy cancellation</li>
-                </ul>
-                <div class="price-button-alignment">
-                    <button class="price-button">Purchase Now</button>
-                </div>
-            </div>
 
-            <div class="price-card-container">
-                <div class="price-card-container-top">
-                    <div class="price-card-alignment">
-                        <h2>ADVANCE</h2>
-                        <span class="dollar-sign">$</span>
-                        <span class="price">6.95</span>
-                        <span class="billing-frequency">/ month </span>
-                        <!-- <span> Put BADGE HERE<img src="" alt="" /></span> -->
+                <div class="price-card-container">
+                    <div class="price-card-container-top">
+                        <div class="price-card-alignment">
+                            <h2>ADVANCE</h2>
+                            <span class="dollar-sign">$</span>
+                            <span class="price">6.95</span>
+                            <span class="billing-frequency">/ month </span>
+                        </div>
+                    </div>
+                    <ul class="price-card-container-content">
+                        <li>As per Basic</li>
+                        <li>Advanced Charts</li>
+                        <li>Trading Simulator</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <div class="price-button-alignment">
+                        <button class="price-button">Purchase Now</button>
                     </div>
                 </div>
-                <ul class="price-card-container-content">
-                    <li>As per Basic</li>
-                    <li>Advanced Charts</li>
-                    <li>Trading Simulator</li>
-                    <li>Email Support</li>
-                </ul>
-                <div class="price-button-alignment">
-                    <button class="price-button">Purchase Now</button>
-                </div>
-
-        </section>
-    </div>
+            </section>
+        </div>
         <footer>
             <ul>
                 <li><a href="#">About</a></li>

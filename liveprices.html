@@ -1,106 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Live Prices - CryptoTrak</title>
+        <meta
+            name="description"
+            content="Monitor and chart your cryptos with ease"
+        />
+        <meta property="og:title" content="CryptoTrak website" />
+        <meta
+            property="og:description"
+            content="A simple Crypto tracker website"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="http://" />
+        <meta property="og:url" content="http://tbc.com.au" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- Google Fonts -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+        />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Live Prices - CryptoTrak</title>
-    <meta name="description" content="Monitor and chart your cryptos with ease" />
-    <meta property="og:title" content="CryptoTrak website" />
-    <meta property="og:description" content="A simple Crypto tracker website" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="http://" />
-    <meta property="og:url" content="http://tbc.com.au" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
+        <!-- CSS Reset -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+        />
 
-    <!-- CSS Reset -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
+        <!-- Milligram CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+        />
+    </head>
 
-    <!-- Milligram CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
-</head>
+    <body>
+        <header>
+            <nav class="nav">
+                <a href="index.html"
+                    ><img
+                        class="navLogo"
+                        src="images/bitcoin-logo.png"
+                        alt="Home"
+                /></a>
+                <h1 class="navTitle">CryptoTrak</h1>
+                <ul class="navListColumns">
+                    <li class="li-decoration">
+                        <a href="liveprices.html">Live Prices</a>
+                    </li>
+                    <li class="li-decoration">
+                        <a href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="li-decoration">
+                        <a href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="li-decoration">
+                        <a href="advanced.html">Advanced</a>
+                    </li>
+                    <li class="li-decoration">
+                        <a href="signup.html">Sign-Up</a>
+                    </li>
+                    <li class="li-decoration">
+                        <a href="signin.html">Sign-In</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section class="tbl--block">
+            <div class="buttons">
+                <button class="btn previous">&lt;&lt; 50</button>
+                <button class="btn next">&gt;&gt; 50</button>
+                <button class="btn reload">Reload</button>
+            </div>
+            <table class="tbl container tbl--container">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th></th>
+                        <!-- <th></th> -->
+                        <th>Price</th>
+                        <th>&#9650;&#9660;24hr%</th>
+                    </tr>
+                </thead>
+                <tbody class="coins-data"></tbody>
+            </table>
+        </section>
 
-<body>
-    <header>
-        <nav class="nav">
-            <a href="index.html"><img class="navLogo" src="images/bitcoin-logo.png" alt="Home" /></a>
-            <h1 class="navTitle">CryptoTrak</h1>
+        <footer>
             <ul>
-                <li class="navListColumns">
-                    <a href="liveprices.html">Live Prices</a>
-                </li>
-                <li class="navListColumns">
-                    <a href="pricing.html">Pricing</a>
-                </li>
-                <li class="navListColumns">
-                    <a href="dashboard.html">Dashboard</a>
-                </li>
-                <li class="navListColumns">
-                    <a href="advanced.html">Advanced</a>
-                </li>
-                <li class="navListColumns">
-                    <a href="signup.html">Sign-Up</a>
-                </li>
-                <li class="navListColumns">
-                    <a href="signin.html">Sign-In</a>
-                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">TOS / Privacy</a></li>
+                <li><a href="#">Crypto Info</a></li>
+                <li><a href="#">Trading Info</a></li>
             </ul>
-        </nav>
-    </header>
-    <section class="tbl--block">
-        <div class="buttons">
-            <button class="btn previous">
-                &lt;&lt; 50</button>
-            <button class="btn next">&gt;&gt; 50</button>
-            <button class="btn reload">Reload</button>
-        </div>
-        <table class="tbl container tbl--container">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th></th>
-                    <!-- <th></th> -->
-                    <th>Price</th>
-                    <th>&#9650;&#9660;24hr%</th>
+            <div class="social-media">
+                <li>
+                    <a href="#"
+                        ><img
+                            src="images/linkedin-logo.png"
+                            alt="Social Media Linkedin link"
+                    /></a>
+                </li>
+                <li>
+                    <a href="#"
+                        ><img src="images/github-logo.png" alt="Github link"
+                    /></a>
+                </li>
+            </div>
+        </footer>
 
-                </tr>
-            </thead>
-            <tbody class="coins-data">
-
-            </tbody>
-
-        </table>
-    </section>
-
-
-    <footer>
-        <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">TOS / Privacy</a></li>
-            <li><a href="#">Crypto Info</a></li>
-            <li><a href="#">Trading Info</a></li>
-        </ul>
-        <div class="social-media">
-            <li>
-                <a href="#"><img src="images/linkedin-logo.png" alt="Social Media Linkedin link" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="images/github-logo.png" alt="Github link" /></a>
-            </li>
-        </div>
-    </footer>
-
-    <script src="js/cryptotrak.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="js/main.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-</body>
-
+        <script src="js/cryptotrak.js"></script>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script src="js/main.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
 </html>
