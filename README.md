@@ -6,24 +6,20 @@
     -   [The challenge](#the-challenge)
     -   [Screenshot](#screenshot)
     -   [Links](#links)
--   [Our process](#our-process)
+-   [The process](#the-process)
     -   [Built with](#built-with)
     -   [What we learned](#what-we-learned)
     -   [Continued development](#continued-development)
     -   [Useful resources](#useful-resources)
--   [Author](#author)
--   [Acknowledgments](#acknowledgments)
+-   [Authors](#authors)
 
 ## Overview
 
 ### The challenge
 
-Our challenge was to build a desktop/mobile friendly Crypto currency tracker website that users should be able to:
+The challenge was to utilise a free / basic rate limited Crypto API to showcase prices.
 
--   View the ....
--   See the.....
--   Click on....
--
+Utilising the same API, it was prudent to also decomonstarte the use of charts with defined functions to calculate RSI / Bollinger bands.
 
 ### Screenshot
 
@@ -31,54 +27,47 @@ Our challenge was to build a desktop/mobile friendly Crypto currency tracker web
 
 ### Links
 
--   Solution URL: [Add solution URL here](https://your-solution-url.com)
--   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-   Solution URL: [https://mistergjones.github.io/CryptoTrak/]
+-   Solution Code: [https://github.com/mistergjones/CryptoTrak]
 
-## Our process
+## The process
+
+-   The process was to simply find a free Crpyto API with endpoints that could be used to source historical data so price and charts can be rendered to the screen.
 
 ### Built with
 
 -   Semantic HTML5 markup
--   CSS custom properties
--   Flexbox
 -   CSS Grid
--   Mobile-first workflow
 -   chartjs
 -   coincap.io API
 -   anychartjs
 -   lottie
+-   custom functions for chart calculations
 
-### What we learned
+### What was learnt
 
-New learnings in code encapsulates the following:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-    color: papayawhip;
-}
-```
+1. Really enjoyed defining my own mathematical functions to calculte moving averages and RSI. The function below demonstrates the requirement to push a rolling 14 day average into an array for subsequent use.
 
 ```js
-const proudOfThisFunc = () => {
-    console.log("🎉");
-};
+function calculateFirst14DayAverage(movingAverageDays, theDataArray) {
+    var tempArray = [];
+    var runningTotal = 0;
+    for (i = 0; i < movingAverageDays; i++) {
+        runningTotal = runningTotal + theDataArray[i];
+    }
+
+    tempArray.push(runningTotal / movingAverageDays);
+
+    return tempArray;
+}
 ```
 
 ### Continued development
 
 Chartjs has no native CandleStick chart so the use of anychartjs was required. Perhaps forking chartjs and creating a candlestick card for them will be really useful.
 
-### Useful resources
-
--   [Example resource 1](https://www.example.com) - This helped us for XYZ reason. We really liked this pattern and will use it going forward.
--   [Example resource 2](https://www.example.com) - This is an amazing website which helped us finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
 ## Authors
 
--   Website - [Add your name here](https://www.your-site.com)
-
-## Acknowledgments
+-   Glen Jones - [https://www.glenjones.com.au]
+-   Shailesh Kharki
+-   Peter Hristakos
