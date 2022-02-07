@@ -23,7 +23,7 @@ Utilising the same API, it was prudent to also decomonstrate the use of charts w
 
 ### Screenshot
 
-![](screenshot.jpg)
+![Example screenshot](screenshot.png)
 
 ### Links
 
