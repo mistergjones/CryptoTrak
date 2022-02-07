@@ -19,11 +19,11 @@
 
 The challenge was to utilise a free / basic rate limited Crypto API to showcase prices.
 
-Utilising the same API, it was prudent to also decomonstarte the use of charts with defined functions to calculate RSI / Bollinger bands.
+Utilising the same API, it was prudent to also decomonstrate the use of charts with defined functions to calculate RSI / Bollinger bands.
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](screenshot.jpg)
 
 ### Links
 
@@ -46,7 +46,7 @@ Utilising the same API, it was prudent to also decomonstarte the use of charts w
 
 ### What was learnt
 
-1. Really enjoyed defining my own mathematical functions to calculte moving averages and RSI. The function below demonstrates the requirement to push a rolling 14 day average into an array for subsequent use.
+1. Really enjoyed defining my own mathematical functions to calculate moving averages and RSI. The function below demonstrates the requirement to push a rolling 14 day average into an array for subsequent use.
 
 ```js
 function calculateFirst14DayAverage(movingAverageDays, theDataArray) {
@@ -64,7 +64,7 @@ function calculateFirst14DayAverage(movingAverageDays, theDataArray) {
 
 ### Continued development
 
-Chartjs has no native CandleStick chart so the use of anychartjs was required. Perhaps forking chartjs and creating a candlestick card for them will be really useful.
+Chartjs has no native CandleStick chart so the use of anychartjs was required. Perhaps forking Chartjs and creating a candlestick card for them will be really useful.
 
 ## Authors
 
