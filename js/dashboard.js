@@ -12,10 +12,13 @@ var data;
 clearButton.addEventListener("click", () => {
     searchBox.value = "";
 });
-searchBtn.addEventListener("click", async () => {
+searchBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
     let searchValue = searchBox.value;
+    console.log(searchValue);
     if (searchValue != "") {
         let url = "https://api.coincap.io/v2/assets";
+
         await axios
             .get(url)
             .then((response) => {
@@ -56,7 +59,7 @@ searchBtn.addEventListener("click", async () => {
                 searchTable.innerHTML = tableData;
             })
             .catch((error) => {
-                console.log(error);
+                console.log("The response is: ", error);
             });
     } else {
         alert("Enter name of crypto");
@@ -75,7 +78,7 @@ searchBtn.addEventListener("click", async () => {
                 .all([await axios.get(url), await axios.get(url2)])
                 .then(
                     axios.spread((response1, response2) => {
-                        console.log(response1)
+                        console.log(response1);
                         var { dataPoints, dataLabels } = massageData(
                             response1.data.data
                         );

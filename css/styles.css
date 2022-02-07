@@ -647,6 +647,7 @@ h3 {
 /* Dashboard Section */
 
 .dashboard-container {
+    text-align: center;
     margin-top: 5rem;
     padding-top: 5rem;
 }
@@ -654,6 +655,16 @@ h3 {
 .dashboard-heading {
     margin-top: 2rem;
     padding-top: 2rem;
+    color: var(--color-white);
+}
+
+#search-box {
+    color: white;
+    width: 60%;
+}
+
+::placeholder {
+    color: var(--color-white);
 }
 
 #search-result-table,
